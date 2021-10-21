@@ -12,21 +12,6 @@ puzzle = [
          [0, 4, 0, 0, 0, 1, 0, 3, 0]
 ]
 
-""" Create a function to solve the puzzle, using functions: find_empty and num_check  """
-def solve(puzzle):
-  row, column = find_empty(puzzle)
-  if row and column == None:
-    return "Puzzle solved!"
-  return None
-
-  for num in range(1,10):
-    if num_check(puzzle, num):
-      puzzle[row][column] = num
-      if solve(puzzle):
-        return True
-  return False
-
-
 """ Create a function that finds empty spaces """
 def find_empty(puzzle):
   for p in range(len(puzzle)):
@@ -34,8 +19,7 @@ def find_empty(puzzle):
       if puzzle[p][u] == 0:
         return (p,u)
   return "No empty spaces!"
-  
-  
+
   """ Create function that checks whether a given number already exists in the row, column or, 3x3 box """
 def num_check(puzzle, num):
   #Check if num is in row
@@ -55,3 +39,20 @@ def num_check(puzzle, num):
       if num in puzzle[row][column]:
         return False
   return True
+
+
+""" Create a function to solve the puzzle, using functions: find_empty and num_check  """
+def solve(puzzle):
+  row, column = find_empty(puzzle)
+  if row and column == None:
+    return "Puzzle solved!"
+  return None
+
+  for num in range(1,10):
+    if num_check(puzzle, num):
+      puzzle[row][column] = num
+      if solve(puzzle):
+        return True
+  return False
+
+
