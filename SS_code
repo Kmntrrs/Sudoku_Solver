@@ -20,7 +20,7 @@ def find_empty(puzzle):
         return (p,u)
   return "No empty spaces!"
 
-  """ Create function that checks whether a given number already exists in the row, column or, 3x3 box """
+  """ Create function that checks whether a given number already exists in the row, column or, 3x3 grid """
 def num_check(puzzle, num):
   #Check if num is in row
   for row in puzzle:
@@ -33,7 +33,7 @@ def num_check(puzzle, num):
       if num in puzzle[row][column]:
         return False
 
-  #Check if num is in 3x3 square
+  #Check if num is in 3x3 grid
   for row in range(0, len(puzzle), 3):
     for column in range(0, len(puzzle), 3):
       if num in puzzle[row][column]:
